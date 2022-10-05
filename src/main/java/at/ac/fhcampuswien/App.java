@@ -50,7 +50,19 @@ public class App {
 
     //todo Task 3
     public void printPyramid(){
-        // input your solution here
+        int zeilen =6;
+        int sterne=1;
+        for(int i=1;i<=zeilen;i++){
+            for(int p=i;p<zeilen;p++) {
+                System.out.print(" ");
+            }
+            for(int s=1;s<=sterne;s++){
+                System.out.print("*");
+            }
+            sterne=sterne+2;
+            System.out.println();
+        }
+
     }
 
     //todo Task 4
