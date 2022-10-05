@@ -20,10 +20,9 @@ public class App {
                 isInput=false;
             }
             if(input <=0.00 && scannr >1){
-                System.out.println("The largest number is "+format.format(biggest));
+                System.out.println("The largest number is "+format.format(biggest)); //String.format ist auch möglich
                 isInput=false;
-            }
-            if(input > biggest){
+            }else if(input > biggest){
                 biggest = input;
             }
             scannr=scannr+1;
@@ -32,7 +31,21 @@ public class App {
 
     //todo Task 2
     public void stairs(){
-        // input your solution here
+        Scanner scan = new Scanner(System.in);
+        System.out.print("n: ");
+        int zeilen = scan.nextInt();
+        int counter = 1;
+        if(zeilen <=0){
+            System.out.println("Invalid number!");
+        }
+        for (int i=1;i<=zeilen;i++){
+            for(int s=1;s<=i;s++){
+                System.out.print(counter+" ");
+                counter=counter+1;
+            }
+            System.out.println("");
+        }
+
     }
 
     //todo Task 3
