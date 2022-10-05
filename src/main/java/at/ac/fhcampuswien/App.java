@@ -43,7 +43,7 @@ public class App {
                 System.out.print(counter+" ");
                 counter=counter+1;
             }
-            System.out.println("");
+            System.out.println();
         }
 
     }
