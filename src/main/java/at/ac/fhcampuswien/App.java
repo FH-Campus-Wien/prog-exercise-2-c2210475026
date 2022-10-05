@@ -1,12 +1,33 @@
 package at.ac.fhcampuswien;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class App {
 
     //todo Task 1
     public void largestNumber(){
-        // input your solution here
+        boolean isInput = true;
+        Scanner scan = new Scanner(System.in);
+        double biggest = 0.00;
+        int scannr = 1;
+        DecimalFormat format = new DecimalFormat("0.00");
+        while(isInput){
+            System.out.print("Number "+scannr+": ");
+            double input = scan.nextDouble();
+            if(input <= 0.00 && scannr==1){
+                System.out.println("No number entered.");
+                isInput=false;
+            }
+            if(input <=0.00 && scannr >1){
+                System.out.println("The largest number is "+format.format(biggest));
+                isInput=false;
+            }
+            if(input > biggest){
+                biggest = input;
+            }
+            scannr=scannr+1;
+        }
     }
 
     //todo Task 2
