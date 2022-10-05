@@ -52,14 +52,14 @@ public class App {
     public void printPyramid(){
         int zeilen =6;
         int sterne=1;
-        for(int i=1;i<=zeilen;i++){
-            for(int p=i;p<zeilen;p++) {
+        for(int i=1;i<=zeilen;i++){         //zeilen werden generiert bis 6 zeilen
+            for(int p=i;p<zeilen;p++) {     //pro Zeile die Leerzeichen, durch p=i werden Leerzeichen immer weniger
                 System.out.print(" ");
             }
-            for(int s=1;s<=sterne;s++){
+            for(int s=1;s<=sterne;s++){     //Sterne werden ausgegeben
                 System.out.print("*");
             }
-            sterne=sterne+2;
+            sterne=sterne+2;                //hier wird die sternanzahl erhöht (+2 pro Zeile)
             System.out.println();
         }
 
