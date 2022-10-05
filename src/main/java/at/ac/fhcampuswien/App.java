@@ -50,7 +50,7 @@ public class App {
 
     //todo Task 3
     public void printPyramid(){
-        int zeilen =6;
+        final int zeilen =6;
         int sterne=1;
         for(int i=1;i<=zeilen;i++){         //zeilen werden generiert bis 6 zeilen
             for(int p=i;p<zeilen;p++) {     //pro Zeile die Leerzeichen, durch p=i werden Leerzeichen immer weniger
@@ -67,7 +67,40 @@ public class App {
 
     //todo Task 4
     public void printRhombus(){
-        // input your solution here
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("h: ");
+        int h = scanner.nextInt();
+        System.out.print("c: ");
+        char c = scanner.next().charAt(0);
+
+        if(h%2 ==0){
+            System.out.println("Invalid number!");
+        }else {
+
+            int counter=1;
+
+            for(int i=1;i<=h;i++){
+                for (int p=i;p<h;p++){
+                    System.out.print("-");
+                }
+                for (int s=1;s<=counter;s++){
+                    System.out.print(c);
+                }
+                counter=counter+2;
+                System.out.println();
+            }
+            for(int j=h-1;j>=1;j--){
+                for (int l=j;l<h;l++){
+                    System.out.print(" ");
+                }
+                for (int k=1;k<=counter-4;k++){
+                    System.out.print(c);
+                }
+                counter=counter-2;
+                System.out.println();
+            }
+
+        }
     }
 
     //todo Task 5
