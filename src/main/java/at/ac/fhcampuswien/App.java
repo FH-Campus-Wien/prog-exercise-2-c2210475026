@@ -78,25 +78,33 @@ public class App {
         }else {
 
             int haelfte = h/2+1;
-            int counter=1;
-            for(int i=1;i<=haelfte;i++){
-                for (int p=i;p<haelfte;p++){
+            int anzahl=1;
+            for(int zeile=1;zeile<=haelfte;zeile++){
+                for (int p=zeile;p<haelfte;p++){
                     System.out.print(" ");
                 }
-                for (int s=1;s<=counter;s++) {
-                    System.out.print(c);
+                for (int stelle=1;stelle<=anzahl;stelle++) {
+                        if (stelle<=anzahl/2){
+                            System.out.print(Character.toChars(Integer.valueOf(c)-zeile+stelle));
+                        }else{
+                            System.out.print(Character.toChars(Integer.valueOf(c)+zeile-stelle));
+                        }
                 }
-                counter=counter+2;
+                anzahl=anzahl+2;
                 System.out.println();
             }
             for(int j=haelfte-1;j>=1;j--){
                 for (int l=j;l<=haelfte-1;l++){
                     System.out.print(" ");
                 }
-                for (int k=1;k<=(counter-4);k++){ //-4 weil counter einmal "unnötig" um +2 hochzählt
-                    System.out.print(c);
+                for (int k=1;k<=(anzahl-4);k++){ //-4 weil anzahl einmal "unnötig" um +2 hochzählt
+                    if(k<=(anzahl-4)/2){
+                        System.out.print(Character.toChars(Integer.valueOf(c)-j+k));
+                    }else{
+                        System.out.print(Character.toChars(Integer.valueOf(c)+j-k));
+                    }
                 }
-                counter=counter-2;
+                anzahl=anzahl-2;
                 System.out.println();
             }
 
