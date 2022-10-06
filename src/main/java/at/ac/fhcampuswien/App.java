@@ -12,20 +12,21 @@ public class App {
         double biggest = 0.00;
         int scannr = 1;
         DecimalFormat format = new DecimalFormat("0.00");
+
         while(isInput){
             System.out.print("Number "+scannr+": ");
             double input = scan.nextDouble();
-            if(input <= 0.00 && scannr==1){
+            if(input <= 0.00 && scannr==1){             //wenn erster input <= 0 dann Fehler und loop beenden
                 System.out.println("No number entered.");
                 isInput=false;
             }
-            if(input <=0.00 && scannr >1){
+            if(input <=0.00 && scannr >1){              //wenn nummer <=0 und richtige Inputanzahl über 1 dann largest ausgeben
                 System.out.println("The largest number is "+format.format(biggest)); //String.format ist auch möglich
-                isInput=false;
+                isInput=false;                          //loop beenden
             }else if(input > biggest){
-                biggest = input;
+                biggest = input;           //falls richtiger input, loop geht weiter
             }
-            scannr=scannr+1;
+            scannr=scannr+1;            //zaehlt wie oft ein richtiger Input kam
         }
     }
 
@@ -38,8 +39,8 @@ public class App {
         if(zeilen <=0){
             System.out.println("Invalid number!");
         }
-        for (int i=1;i<=zeilen;i++){
-            for(int s=1;s<=i;s++){
+        for (int i=1;i<=zeilen;i++){                //loop für die Zeilen
+            for(int s=1;s<=i;s++){                  //loop für einzelnen stellen pro Zeile
                 System.out.print(counter+" ");
                 counter=counter+1;
             }
@@ -76,35 +77,34 @@ public class App {
         if(h%2 ==0){
             System.out.println("Invalid number!");
         }else {
-
-            int haelfte = h/2+1;
-            int anzahl=1;
-            for(int zeile=1;zeile<=haelfte;zeile++){
-                for (int p=zeile;p<haelfte;p++){
+            int half = h/2+1;
+            int number=1;
+            for(int row=1;row<=half;row++){             //printet eine Pyramide bis mit zur hälftenzeile
+                for (int p=row;p<half;p++){             //printet die Leerzeichen -> werden pro Zeile weniger
                     System.out.print(" ");
                 }
-                for (int stelle=1;stelle<=anzahl;stelle++) {
-                        if (stelle<=anzahl/2){
-                            System.out.print(Character.toChars(Integer.valueOf(c)-zeile+stelle));
-                        }else{
-                            System.out.print(Character.toChars(Integer.valueOf(c)+zeile-stelle));
+                for (int pos=1;pos<=number;pos++) {     //printet die anzahl von buchstaben die pro Zeile sein sollen, +2 jede Zeile
+                        if (pos<=number/2){             //vor der Hälfte dieser Zeile zählt er hoch
+                            System.out.print(Character.toChars(Integer.valueOf(c)-row+pos));
+                        }else{                          //nach der Häflte zählt er runter
+                            System.out.print(Character.toChars(Integer.valueOf(c)+row-pos));
                         }
                 }
-                anzahl=anzahl+2;
+                number=number+2;
                 System.out.println();
             }
-            for(int j=haelfte-1;j>=1;j--){
-                for (int l=j;l<=haelfte-1;l++){
+            for(int row=half-1;row>=1;row--){       //pyramide in die andere Richtung
+                for (int l=row;l<=half-1;l++){
                     System.out.print(" ");
                 }
-                for (int k=1;k<=(anzahl-4);k++){ //-4 weil anzahl einmal "unnötig" um +2 hochzählt
-                    if(k<=(anzahl-4)/2){
-                        System.out.print(Character.toChars(Integer.valueOf(c)-j+k));
+                for (int pos=1;pos<=(number-4);pos++){ //-4 weil number einmal "unnötig" um +2 hochzählt
+                    if(pos<=(number-4)/2){
+                        System.out.print(Character.toChars(Integer.valueOf(c)-row+pos));
                     }else{
-                        System.out.print(Character.toChars(Integer.valueOf(c)+j-k));
+                        System.out.print(Character.toChars(Integer.valueOf(c)+row-pos));
                     }
                 }
-                anzahl=anzahl-2;
+                number=number-2;
                 System.out.println();
             }
 
@@ -119,26 +119,28 @@ public class App {
         boolean isInput=true;
         int counter=1;
         int counterfuenfer=0;
-        while(isInput){
+
+        while(isInput){                             //solange input korrekt ist gehts weiter
             System.out.print("Mark "+counter+": ");
             int input=scanner.nextInt();
-            if (input >=1 && input <=5){
+
+            if (input >=1 && input <=5){    //wenn input richtig ist wird summiert und gecountet
                 sum = sum+input;
                 counter = counter+1;
                 if(input==5){
-                    counterfuenfer=counterfuenfer+1;
+                    counterfuenfer=counterfuenfer+1;        //falls 5er geht der fuenfderzaehler hoch
                 }
             }else if (input==0){
-                if (counter==1){
-                    System.out.println("Average: 0.00");
+                if (counter==1){                            //wenn bei erstem Eingeben Input =0 , ist durchschnitt 0
+                    System.out.println("Average: 0.00");    //hardcoded weil 0 dividiert durch 0 NaN ist
                     System.out.println("Negative marks: "+counterfuenfer);
                 }else {
-                    System.out.println("Average: " + df.format(sum / (counter - 1)));
+                    System.out.println("Average: " + df.format(sum / (counter - 1)));   //durchschnitt berechnen
                     System.out.println("Negative marks: " + counterfuenfer);
                 }
                 isInput = false;
             }else {
-                System.out.println("Invalid mark!");
+                System.out.println("Invalid mark!");        //bei unerlaubtem input gehts einfach weiter und der input wird nicht gezaehlt
             }
         }
     }
@@ -152,11 +154,11 @@ public class App {
         boolean loop = true;
 
         while (loop) {
-            for (int i = 0; i < inputString.length(); i++) {
+            for (int i = 0; i < inputString.length(); i++) {            //jede ziffer pro Zahl wird herausgenommen und quadriert
                 int stelle = Character.getNumericValue(inputString.charAt(i));
                 gesamt = gesamt + stelle * stelle;
             }
-            if(gesamt==1 || gesamt==4){
+            if(gesamt==1 || gesamt==4){                             //falls das ergebnis von einer Zahl 1 oder 4 ist wird der loop beendet und ausgegebn
                 loop=false;
                 if (gesamt==1){
                     System.out.println("Happy number!");
@@ -164,8 +166,8 @@ public class App {
                     System.out.println("Sad number!");
                 }
             }
-            inputString=Integer.toString(gesamt);
-            gesamt=0;
+            inputString=Integer.toString(gesamt);               //Ergebnis wird zum neuen Input
+            gesamt=0;                                           //gesamt wird wieder auf 0 gesetzt weil es wiederverwendet werden soll
         }
 
 
