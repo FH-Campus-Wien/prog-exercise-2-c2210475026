@@ -138,23 +138,29 @@ public class App {
     //todo Task 6
     public void happyNumbers(){
         Scanner scanner = new Scanner(System.in);
-        int input = scanner.nextInt();
-        boolean notfinished=true;
+        System.out.print("n: ");
+        String inputString = scanner.next();
+        int gesamt=0;
+        boolean loop = true;
 
-        while (notfinished){
-            int stellen=0;
-            int inputcopy=input;
-
-            while (inputcopy != 0){
-                inputcopy = inputcopy/10;
-                stellen=stellen+1;
+        while (loop) {
+            for (int i = 0; i < inputString.length(); i++) {
+                int stelle = Character.getNumericValue(inputString.charAt(i));
+                gesamt = gesamt + stelle * stelle;
             }
-            for (int i=0;i<=stellen;i++){
-                int zahl = input%(10*i);
-                zahl=zahl^2;
-                inputcopy=inputcopy+zahl;
+            if(gesamt==1 || gesamt==4){
+                loop=false;
+                if (gesamt==1){
+                    System.out.println("Happy number!");
+                }else {
+                    System.out.println("Sad number!");
+                }
             }
+            inputString=Integer.toString(gesamt);
+            gesamt=0;
         }
+
+
 
 
     }
