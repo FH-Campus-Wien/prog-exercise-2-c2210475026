@@ -77,10 +77,10 @@ public class App {
             System.out.println("Invalid number!");
         }else {
 
+            int haelfte = h/2+1;
             int counter=1;
-
-            for(int i=1;i<=h;i++){
-                for (int p=i;p<h;p++){
+            for(int i=1;i<=haelfte;i++){
+                for (int p=i;p<haelfte;p++){
                     System.out.print(" ");
                 }
                 for (int s=1;s<=counter;s++) {
@@ -89,8 +89,8 @@ public class App {
                 counter=counter+2;
                 System.out.println();
             }
-            for(int j=h-1;j>=1;j--){
-                for (int l=j;l<h;l++){
+            for(int j=haelfte-1;j>=1;j--){
+                for (int l=j;l<=haelfte-1;l++){
                     System.out.print(" ");
                 }
                 for (int k=1;k<=(counter-4);k++){ //-4 weil counter einmal "unnötig" um +2 hochzählt
