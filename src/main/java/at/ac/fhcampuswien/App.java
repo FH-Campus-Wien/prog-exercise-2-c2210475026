@@ -121,9 +121,14 @@ public class App {
                     counterfuenfer=counterfuenfer+1;
                 }
             }else if (input==0){
-                System.out.println("Average: "+df.format(sum/(counter-1)));
-                System.out.println("Negative marks: "+counterfuenfer);
-                isInput=false;
+                if (counter==1){
+                    System.out.println("Average: 0.00");
+                    System.out.println("Negative marks: "+counterfuenfer);
+                }else {
+                    System.out.println("Average: " + df.format(sum / (counter - 1)));
+                    System.out.println("Negative marks: " + counterfuenfer);
+                }
+                isInput = false;
             }else {
                 System.out.println("Invalid mark!");
             }
@@ -132,7 +137,26 @@ public class App {
 
     //todo Task 6
     public void happyNumbers(){
-        // input your solution here
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+        boolean notfinished=true;
+
+        while (notfinished){
+            int stellen=0;
+            int inputcopy=input;
+
+            while (inputcopy != 0){
+                inputcopy = inputcopy/10;
+                stellen=stellen+1;
+            }
+            for (int i=0;i<=stellen;i++){
+                int zahl = input%(10*i);
+                zahl=zahl^2;
+                inputcopy=inputcopy+zahl;
+            }
+        }
+
+
     }
 
     public static void main(String[] args){
