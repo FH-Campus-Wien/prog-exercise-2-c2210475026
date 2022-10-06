@@ -81,9 +81,9 @@ public class App {
 
             for(int i=1;i<=h;i++){
                 for (int p=i;p<h;p++){
-                    System.out.print("-");
+                    System.out.print(" ");
                 }
-                for (int s=1;s<=counter;s++){
+                for (int s=1;s<=counter;s++) {
                     System.out.print(c);
                 }
                 counter=counter+2;
@@ -93,7 +93,7 @@ public class App {
                 for (int l=j;l<h;l++){
                     System.out.print(" ");
                 }
-                for (int k=1;k<=counter-4;k++){
+                for (int k=1;k<=(counter-4);k++){ //-4 weil counter einmal "unnötig" um +2 hochzählt
                     System.out.print(c);
                 }
                 counter=counter-2;
@@ -105,7 +105,29 @@ public class App {
 
     //todo Task 5
     public void marks(){
-        // input your solution here
+        Scanner scanner = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("0.00");
+        double sum=0;
+        boolean isInput=true;
+        int counter=1;
+        int counterfuenfer=0;
+        while(isInput){
+            System.out.print("Mark "+counter+": ");
+            int input=scanner.nextInt();
+            if (input >=1 && input <=5){
+                sum = sum+input;
+                counter = counter+1;
+                if(input==5){
+                    counterfuenfer=counterfuenfer+1;
+                }
+            }else if (input==0){
+                System.out.println("Average: "+df.format(sum/(counter-1)));
+                System.out.println("Negative marks: "+counterfuenfer);
+                isInput=false;
+            }else {
+                System.out.println("Invalid mark!");
+            }
+        }
     }
 
     //todo Task 6
